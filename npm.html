@@ -1,0 +1,69 @@
+<script type="text/x-red" data-template-name="npm">
+  <div class="form-row">
+    <label for="node-input-nodename"><i class="fa fa-file"></i> <span data-i18n="npm.node"></span></label>
+    <input type="text" id="node-input-nodename" data-i18n="[placeholder]npm.node">
+  </div>
+  <div class="form-row">
+    <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="npm.method.label"></span></label>
+    <select type="text" id="node-input-method" style="width:72%;">
+      <option value="install" selected data-i18n="[html]npm.method.install"></option>
+      <option value="uninstall" data-i18n="[html]npm.method.uninstall"></option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-path"><i class="fa fa-tag"></i> <span data-i18n="npm.path.label"></span></label>
+    <input type="text" id="node-input-path" data-i18n="[placeholder]npm.path.placeholder">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="npm.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]npm.name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="npm">
+  <p>This node allows the user to execute <code>npm install/uninstall</code>
+  commands</p>
+
+  <h3>Advanced</h3>
+
+  <p>It can be configured by <code>msg</code> with:<br>
+  - <code>msg.method</code> to set the method you want to use,<br>
+  - <code>msg.path</code> to set the path folder where you want to execute your NPM command,<br>
+  - <code>msg.nodename</code>, <code>msg.value</code> or <code>msg.payload</code> to set the package name.</p>
+
+  <p>The output returns the message as is</p>
+  <br>
+
+  <p>two message will be published with the Node-RED websocket on topic <code>npmInstall</code><br>
+  the first message is an object with the property <code>progressbarTime</code> that contain the estimated time in second to install this npm module</p>
+  <br>
+
+  the second message is an object with the property <code>status</code> that contain :<br>
+  - <code>success</code> if the command was done well.<br>
+  - <code>error</code> if the command returned an error.<br>
+
+  <p><b>Credits</b> : In order to work this node uses <code>NPM</code> as a librarie.</p>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('npm',{
+    category: 'advanced-function',
+    color:"#fff",
+    defaults: {
+      nodename: {value:"",required:true},
+      method: {value:"install", required:true},
+      path: {value:"", required: true},
+      name: {value:""}
+    },
+    inputs:1,
+    outputs:1,
+    icon: "npm.png",
+    align: "right",
+    label: function() {
+      return this.name||this.method;
+    },
+    labelStyle: function() {
+      return this.name?"node_label_italic":"";
+    }
+  });
+</script>

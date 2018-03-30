@@ -1,0 +1,24 @@
+<script type="text/x-red" data-help-name="npm">
+  <p>This node allows the user to execute <code>npm install/uninstall</code>
+  commands</p>
+
+  <h3>Advanced</h3>
+
+  <p>It can be configured by <code>msg</code> with:<br>
+  - <code>msg.method</code> to set the method you want to use,<br>
+  - <code>msg.path</code> to set the path folder where you want to execute your NPM command,<br>
+  - <code>msg.nodename</code>, <code>msg.value</code> or <code>msg.payload</code> to set the package name.</p>
+
+  <p>The output returns the message as is</p>
+  <br>
+
+  <p>two message will be published with the Node-RED websocket on topic <code>npmInstall</code><br>
+  the first message is an object with the property <code>progressbarTime</code> that contain the estimated time in second to install this npm module</p>
+  <br>
+
+  the second message is an object with the property <code>status</code> that contain :<br>
+  - <code>success</code> if the command was done well.<br>
+  - <code>error</code> if the command returned an error.<br>
+
+  <p><b>Credits</b> : In order to work this node uses <code>NPM</code> as a librarie.</p>
+</script>

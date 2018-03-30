@@ -1,0 +1,15 @@
+{
+  "npm": {
+    "node": "Node",
+    "name": "Name",
+    "method": {
+      "label": "Method",
+      "install": "install",
+      "uninstall": "uninstall"
+    },
+    "path": {
+      "label": "Path",
+      "placeholder": "Installation folder"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ttb-node-npm",
+  "version": "0.0.2",
+  "description": "This node use NPM to install or uninstall nodes in Node-RED.",
+  "node-red": {
+    "nodes": {
+      "npm": "npm.js"
+    }
+  },
+  "dependencies": {
+    "get-installed-path": "4.0.8",
+    "fs-extra": "5.0.0"
+  },
+  "keywords": [
+    "node-red",
+    "node",
+    "npm"
+  ],
+  "author": "http://www.digitalairways.com/",
+  "license": "http://www.wtfpl.net"
+}
